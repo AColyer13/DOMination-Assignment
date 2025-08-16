@@ -63,9 +63,9 @@ startContainer.classList.remove("hidden");
 // ==============================
 function loadQuestion() {
   const { question, options, answer } = quizData[currentQuestionIndex];
-  questionContainer.textContent = question;
+  questionContainer.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}: ${question}`;
   optionsContainer.innerHTML = "";
-  correctAnswer= answer;
+  correctAnswer = answer;
   
   // Render choices
   options.forEach((option, index) => {
@@ -146,4 +146,3 @@ function shuffle(array) {
 // ==============================
 
 loadQuestion();
-
