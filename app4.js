@@ -33,11 +33,27 @@ const quizContainer = document.getElementById("quiz-container");
 const scoreContainer = document.getElementById("score-container");
 const scoreDisplay = document.getElementById("score-display");
 const restartButton = document.getElementById("restart-button");
+const startContainer = document.getElementById("start-container");
+const startButton = document.getElementById("start-button");
 
 let currentQuestionIndex = 0;
 let score = 0;
 let answered = false;
 let correctAnswer;
+
+// ==============================
+// Load Start Page
+// ==============================
+startButton.onclick = () => {
+  startContainer.classList.add("hidden");
+  quizContainer.classList.remove("hidden");
+  loadQuestion();
+};
+
+// Hide quiz on load, show start page
+quizContainer.classList.add("hidden");
+scoreContainer.classList.add("hidden");
+startContainer.classList.remove("hidden");
 
 // ==============================
 // Load a Question
