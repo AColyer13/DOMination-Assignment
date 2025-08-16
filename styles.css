@@ -20,7 +20,7 @@ body {
 
 #quiz-container,
 #score-container {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   background: #fff;
   color: #4F2683;
@@ -67,5 +67,6 @@ button:hover {
 
 .hidden {
   display: none;
+
 
 }
