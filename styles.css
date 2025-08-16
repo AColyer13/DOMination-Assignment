@@ -54,16 +54,26 @@ button:hover {
 
 }
 
-.correct {
-  background: #28a745; /* Green */
+#options-container button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: 0.5; /* Fade disabled buttons */
+}
+
+/* Keep correct answer fully visible even if disabled */
+#options-container button.correct {
+  opacity: 1 !important;
+  background: #28a745; /* Green for correct */
   color: #fff;
   border-color: #28a745;
 }
 
-.incorrect {
-  background: #dc3545; /* Red */
-  color: #fff;
+/* Incorrect answer fades (inherits opacity from :disabled), but is red */
+#options-container button.incorrect {
+  background: #dc3545; /* Red for incorrect */
   border-color: #dc3545;
+  color: #fff;
+  /* No opacity override here */
 }
 
 .hidden {
