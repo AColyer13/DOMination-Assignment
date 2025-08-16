@@ -45,6 +45,9 @@ let correctAnswer;
 // Load Start Page
 // ==============================
 startButton.onclick = () => {
+  shuffle(quizData); // Shuffle questions before starting
+  currentQuestionIndex = 0;
+  score = 0;
   startContainer.classList.add("hidden");
   quizContainer.classList.remove("hidden");
   loadQuestion();
@@ -129,6 +132,17 @@ restartButton.onclick = () => {
   quizContainer.classList.remove("hidden"); // Show quiz container
   loadQuestion(); // Restart quiz
 };
+
+
+// ==============================
+// Question Shuffler
+// ==============================
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
 // ==============================
 // Start Quiz
