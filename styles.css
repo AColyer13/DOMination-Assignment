@@ -1,0 +1,71 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  min-height: 80vh;
+
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                    url('https://s.yimg.com/ny/api/res/1.2/A_RUd59z_bPFF2J3GWYrEQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MDA7Y2Y9d2VicA--/https://media.zenfs.com/en/sb_nation_articles_115/ab1ee87a9e7642f7a816c3049ff58950');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+    display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;     /* Horizontal alignment */
+  justify-content: flex-start; /* Top alignment */
+
+}
+
+#quiz-container,
+#score-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  color: #4F2683;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(79, 38, 131, 0.2);
+  padding: 24px;
+  
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+  padding: 12px;
+  width: 100%;
+  background: #FFC62F; /* Vikings gold */
+  color: #4F2683;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: 8px solid transparent;
+  box-sizing: border-box;
+}
+
+button:hover {
+  background: #4F2683;
+  color: #FFC62F;
+
+}
+
+.correct {
+  background: #28a745; /* Green */
+  color: #fff;
+  border-color: #28a745;
+}
+
+.incorrect {
+  background: #dc3545; /* Red */
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.hidden {
+  display: none;
+
+}
