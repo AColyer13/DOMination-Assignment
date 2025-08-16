@@ -35,6 +35,8 @@ const scoreDisplay = document.getElementById("score-display");
 const restartButton = document.getElementById("restart-button");
 const startContainer = document.getElementById("start-container");
 const startButton = document.getElementById("start-button");
+const progressBar = document.getElementById("progress-bar");
+
 
 let currentQuestionIndex = 0;
 let score = 0;
@@ -58,6 +60,11 @@ quizContainer.classList.add("hidden");
 scoreContainer.classList.add("hidden");
 startContainer.classList.remove("hidden");
 
+function updateProgressBar() {
+  const percent = ((currentQuestionIndex) / quizData.length) * 100;
+  progressBar.style.width = `${percent}%`;
+}
+
 // ==============================
 // Load a Question
 // ==============================
@@ -66,6 +73,8 @@ function loadQuestion() {
   questionContainer.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}: ${question}`;
   optionsContainer.innerHTML = "";
   correctAnswer = answer;
+
+  updateProgressBar(); // <-- Add this line
   
   // Render choices
   options.forEach((option, index) => {
@@ -82,17 +91,24 @@ function loadQuestion() {
 // ==============================
 // Handles Answer Selection
 // ==============================
-function selectOption(selected) {
 
-  if (answered) return; // Prevent multiple scoring
+function selectOption(selected) {
+ if (answered) return; // Prevent multiple scoring
   answered = true;
 
   Array.from(optionsContainer.children).forEach((btn, i) => {
-    btn.disabled = true;
     if (i === correctAnswer) {
+      btn.disabled = false; // Correct answer stays enabled
       btn.classList.add("correct"); // Highlight correct
-    } else if (i === selected) {
-      btn.classList.add("incorrect"); // Highlight wrong choice
+    } else {
+      btn.disabled = true; // Disable all other options
+      btn.classList.remove("correct");
+      // Highlight selected incorrect answer
+      if (i === selected && selected !== correctAnswer) {
+        btn.classList.add("incorrect");
+      } else {
+        btn.classList.remove("incorrect");
+      }
     }
   });
 
@@ -100,6 +116,7 @@ function selectOption(selected) {
   if (selected === correctAnswer) score++;
   nextButton.classList.remove("hidden"); // Show "Next" button
 }
+
 
 // ==============================
 // Move to Next Question or Show Score
@@ -120,6 +137,7 @@ function showScore() {
   quizContainer.classList.add("hidden"); // Hide quiz container
   scoreContainer.classList.remove("hidden"); // Show score container
   scoreDisplay.textContent = `You scored ${score} out of ${quizData.length}`;
+  progressBar.style.width = `100%`; // Fill bar at end
 }
 
 // ==============================
